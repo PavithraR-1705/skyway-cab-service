@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app) # Idhu dhaan unga frontend-ah backend-oda pesavaikkum
 
-# Render-la namba set panna MONGO_URI-ah edukkum
+# MongoDB Connection
 MONGO_URI = os.environ.get('MONGO_URI')
 client = MongoClient(MONGO_URI)
 db = client['skyway_db']
@@ -17,10 +19,6 @@ def home():
 @app.route('/book', methods=['POST'])
 def book_cab():
     data = request.json
-    if not data:
-        return jsonify({"error": "No data received"}), 400
-    
-    # Database-la data-ah save pannum
     bookings_collection.insert_one(data)
     return jsonify({"message": "Booking successful!"}), 201
 
