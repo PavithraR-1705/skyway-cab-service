@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Ride - Skyway Cab</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+    <div id="globalModal" class="global-modal-overlay">
+        <div class="glass-modal">
+            <div class="modal-emoji">🚖</div>
+            <h3 id="modalTitle">Booking Confirmed!</h3>
+            <p id="modalMessage">Searching for nearby drivers...</p>
+            <button onclick="closeGlobalModal()" class="glass-btn">OK</button>
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="side-panel">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-logo">
+        </div>
+
+        <div class="card-container">
+            <div class="booking-card">
+                <h2>Book Your Ride</h2>
+                <form id="bookingForm">
+                    <div class="input-group">
+                        <label>Your Name</label>
+                        <input type="text" id="custName" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="input-group-row">
+                        <div class="input-group">
+                            <label>Pickup Date</label>
+                            <input type="date" id="pickupDate" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Pickup Time</label>
+                            <input type="time" id="pickupTime" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Pickup Location</label>
+                        <input type="text" id="pickupLoc" placeholder="From where?" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Drop Location</label>
+                        <input type="text" id="dropLoc" placeholder="To where?" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Select Car Type</label>
+                        <select id="carType" required>
+                            <option value="" disabled selected>Select Car Type</option>
+                            <option value="Mini">Mini (4 Seater)</option>
+                            <option value="Sedan">Sedan (Premium)</option>
+                            <option value="SUV">SUV (6 Seater)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="confirm-btn">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <img src="hero hand.png" alt="App Preview" class="side-logo">
+        </div>
+    </div>
+
+    <script>
+        const gModal = document.getElementById('globalModal');
+        
+        // Set today's date as minimum
+        const dateInput = document.getElementById('pickupDate');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        document.getElementById('bookingForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const rawDate = document.getElementById('pickupDate').value;
+            // Formatting date to DD-MM-YYYY
+            const formattedDate = rawDate.split('-').reverse().join('-');
+
+            const newBooking = {
+                name: document.getElementById('custName').value,
+                from: document.getElementById('pickupLoc').value,
+                to: document.getElementById('dropLoc').value,
+                car: document.getElementById('carType').value,
+                date: formattedDate,
+                time: document.getElementById('pickupTime').value,
+                status: "Need" 
+            };
+
+            // Saving data
+            let bookings = JSON.parse(localStorage.getItem('skyway_bookings')) || [];
+            bookings.push(newBooking);
+            localStorage.setItem('skyway_bookings', JSON.stringify(bookings));
+
+            gModal.style.display = "flex";
+        };
+
+        function closeGlobalModal() {
+            gModal.style.display = "none";
+            // Check file path
+            window.location.href = "search-drivers.html"; 
+        }
+    </script>
+
+    <style>
+        /* Row styling for Date and Time side-by-side */
+        .input-group-row {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+        .input-group-row .input-group {
+            flex: 1;
+        }
+        /* UI matching */
+        input[type="date"], input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+    </style>
+</body>
+</html>

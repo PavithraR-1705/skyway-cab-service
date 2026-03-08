@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching for Drivers - Skyway</title>
+    <link rel="stylesheet" href="search-drivers.css">
+</head>
+<body>
+    <div class="header-box">
+        <h1 id="locationDisplay">Searching for Drivers...</h1>
+        <p>Real-time availability based on your location</p>
+    </div>
+    <div id="driversList" class="drivers-container"></div>
+
+    <script>
+        const driverData = [
+            { name: "Rajendran", city: "Namakkal", car: "Sedan (Swift)", status: "Free" },
+            { name: "Suresh", city: "Namakkal", car: "SUV (Innova)", status: "Active" },
+            { name: "Mani", city: "Karur", car: "Mini (Alto)", status: "Free" }
+        ];
+
+        window.onload = () => {
+            const bookings = JSON.parse(localStorage.getItem('skyway_bookings')) || [];
+            const lastBooking = bookings[bookings.length - 1];
+            const userCity = lastBooking ? lastBooking.from : "";
+            document.getElementById('locationDisplay').innerText = `Drivers near ${userCity}`;
+
+            const listDiv = document.getElementById('driversList');
+            const filtered = driverData.filter(d => d.city.toLowerCase().includes(userCity.toLowerCase()));
+
+            if (filtered.length === 0) {
+                listDiv.innerHTML = "<p style='color:white;'>No drivers found.</p>";
+                return;
+            }
+
+            filtered.forEach(driver => {
+                const isBusy = driver.status === "Active";
+                listDiv.innerHTML += `
+                    <div class="driver-card">
+                        <div>
+                            <h3>${driver.name}</h3>
+                            <p>${driver.car}</p>
+                        </div>
+                        <button class="book-btn" ${isBusy ? 'disabled' : ''} onclick="confirmRide('${driver.name}')">
+                            ${isBusy ? 'Busy' : 'Book'}
+                        </button>
+                    </div>`;
+            });
+        };
+        function confirmRide(name) { alert("Booked with " + name); window.location.href="index.html"; }
+    </script>
+</body>
+</html>

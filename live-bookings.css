@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url("Backgroun logo.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 0 3%;
+}
+
+.side-panel {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.side-img {
+    width: 280px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.main-content {
+    flex: 2.5;
+    display: flex;
+    justify-content: center;
+}
+
+.list-card {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 950px; /* Wider card for more columns */
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.list-card h2 {
+    color: #1e6fd9;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    background: #f1f7ff;
+    border-radius: 12px;
+    overflow-x: auto; /* Horizontal scroll if table is wide */
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+th {
+    padding: 15px;
+    background: #e3efff;
+    color: #007BFF;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 15px;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+}
+
+.back-btn {
+    padding: 12px 30px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+    .side-panel { display: none; }
+}

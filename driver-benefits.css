@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url("Backgroun logo.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.page-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 0 5%;
+}
+
+.side-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.side-logo {
+    width: 320px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.main-content {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+}
+
+.benefit-card {
+    background: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.benefit-card h2 {
+    color: #1e6fd9;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+.benefit-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* Diamond bullet style from screenshot */
+.benefit-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.benefit-list li::before {
+    content: "◆"; 
+    position: absolute;
+    left: 0;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.start-btn {
+    width: 100%;
+    padding: 15px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1000px) {
+    .side-panel { display: none; }
+    .page-container { justify-content: center; }
+}

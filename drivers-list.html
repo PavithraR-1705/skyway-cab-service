@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivers List - Skyway</title>
+    <link rel="stylesheet" href="drivers-list.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <div class="side-panel">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-img">
+        </div>
+
+        <div class="card-container">
+            <div class="list-card">
+                <h2>🚛 Drivers List</h2>
+                
+                <div class="table-container">
+                    <table id="driversTable">
+                        <thead>
+                            <tr>
+                                <th>S.NO</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Vehicle No</th>
+                                <th>Place</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="driverTableBody">
+                            </tbody>
+                    </table>
+                </div>
+
+                <button class="back-btn" onclick="location.href='admin.html'">Back to Dashboard</button>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <img src="hero hand.png" alt="App Preview" class="side-img">
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            const drivers = JSON.parse(localStorage.getItem('skyway_drivers')) || [];
+            const tbody = document.getElementById('driverTableBody');
+
+            if (drivers.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='6' style='text-align:center; padding: 20px;'>No drivers registered yet.</td></tr>";
+            } else {
+                tbody.innerHTML = "";
+                drivers.forEach((driver, index) => {
+                    let row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${driver.name}</td>
+                        <td>${driver.phone}</td>
+                        <td>${driver.vehicle}</td>
+                        <td>${driver.place}</td>
+                        <td class="status-active">Active</td>
+                    </tr>`;
+                    tbody.innerHTML += row;
+                });
+            }
+        };
+    </script>
+</body>
+</html>

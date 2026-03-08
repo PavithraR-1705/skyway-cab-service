@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard - Skyway</title>
+    <link rel="stylesheet" href="driver-dashboard.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="Logo (2).png" alt="Skyway Logo" class="nav-logo">
+            <a href="#" class="nav-link">Customers</a>
+        </div>
+        <div class="nav-right">
+            <span class="driver-name">Rajendran</span>
+            <div class="avatar">R</div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="header-section">
+            <h1>📅 Today's Cab Requests</h1>
+            <p>Manage and accept recent customer bookings</p>
+        </div>
+
+        <div class="table-container">
+            <table class="booking-table">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Date & Time</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Car Type</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingList">
+                    <tr>
+                        <td class="cust-name">Pavithra</td> <td>08-03-2026 | 10:30 AM</td>
+                        <td>Namakkal</td>
+                        <td>Karur</td>
+                        <td>Sedan</td>
+                        <td><span class="status-badge need">Need</span></td>
+                        <td><button class="accept-btn" onclick="acceptBooking(this)">Accept Ride</button></td>
+                    </tr>
+                    <tr>
+                        <td class="cust-name">Suresh</td>
+                        <td>08-03-2026 | 11:15 AM</td>
+                        <td>Salem</td>
+                        <td>Trichy</td>
+                        <td>SUV</td>
+                        <td><span class="status-badge booked">Driver Booked</span></td>
+                        <td><button class="accept-btn disabled" disabled>Accepted</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function acceptBooking(btn) {
+            const row = btn.closest('tr');
+            const statusCell = row.querySelector('.status-badge');
+            statusCell.innerText = "Driver Booked";
+            statusCell.classList.remove('need');
+            statusCell.classList.add('booked');
+            btn.innerText = "Accepted";
+            btn.classList.add('disabled');
+            btn.disabled = true;
+        }
+    </script>
+</body>
+</html>

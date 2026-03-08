@@ -1,0 +1,68 @@
+/* Glass Effect Modal Overlay */
+.global-modal-overlay {
+    display: none; /* Initiala hide aagi irukkum */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Transparent white */
+    backdrop-filter: blur(15px); /* Strong Glass Blur */
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glass Modal Card */
+.glass-modal {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 40px;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    color: #fff; /* White text for glass look */
+}
+
+/* Text and Icons */
+.glass-modal h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.glass-modal p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Glass Button */
+.glass-btn {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 14px 50px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,123,255,0.3);
+    transition: 0.3s;
+}
+
+.glass-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Simple Pop-in Animation */
+@keyframes modalPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.glass-modal { animation: modalPop 0.4s ease; }

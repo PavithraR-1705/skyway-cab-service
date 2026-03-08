@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Bookings - Skyway Cab</title>
+    <link rel="stylesheet" href="live-bookings.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <div class="side-panel">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-img">
+        </div>
+
+        <div class="main-content">
+            <div class="list-card">
+                <h2>📍 Live Customer Bookings</h2>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>S.NO</th>
+                                <th>Customer</th>
+                                <th>Pickup</th>
+                                <th>Drop</th>
+                                <th>Mobile</th>
+                                <th>Car</th>
+                                <th>Date/Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingTableBody">
+                            </tbody>
+                    </table>
+                </div>
+                
+                <button class="back-btn" onclick="location.href='admin.html'">Back to Dashboard</button>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <img src="hero hand.png" alt="App Preview" class="side-img">
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = () => {
+            // LocalStorage-la irundhu bookings data-va edukkurom
+            const bookings = JSON.parse(localStorage.getItem('skyway_bookings')) || [];
+            const tbody = document.getElementById('bookingTableBody');
+            
+            if(bookings.length > 0) {
+                tbody.innerHTML = ""; 
+                bookings.forEach((data, index) => {
+                    let row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${data.name}</td>
+                        <td>${data.pickup}</td>
+                        <td>${data.drop}</td>
+                        <td>${data.phone}</td>
+                        <td>${data.carType}</td>
+                        <td>${data.date} | ${data.time}</td>
+                    </tr>`;
+                    tbody.innerHTML += row;
+                });
+            } else {
+                tbody.innerHTML = "<tr><td colspan='7' style='text-align:center; padding:20px;'>No bookings found.</td></tr>";
+            }
+        }
+    </script>
+</body>
+</html>

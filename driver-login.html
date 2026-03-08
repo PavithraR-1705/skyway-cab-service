@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Login - Skyway Cab</title>
+    <link rel="stylesheet" href="driver-login.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="side-area">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-img">
+        </div>
+
+        <div class="card-container">
+            <div class="login-card">
+                <h2>🚕 Driver Login</h2>
+                <form id="driverLoginForm">
+                    <div class="input-field">
+                        <input type="number" id="loginPhone" placeholder="Phone Number" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="side-area">
+            <img src="hero hand.png" alt="App Preview" class="side-img">
+        </div>
+    </div>
+
+    <div id="globalModal" class="global-modal-overlay">
+        <div class="glass-modal">
+            <div id="modalEmoji" style="font-size: 60px; margin-bottom: 10px;">✨</div>
+            <h3 id="modalTitle">Success!</h3>
+            <p id="modalMessage">Your action was completed successfully.</p>
+            <button id="modalBtn" onclick="closeGlobalModal()" class="glass-btn">Great!</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('globalModal');
+        let redirectUrl = "";
+
+        document.getElementById('driverLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('loginPhone').value;
+            let drivers = JSON.parse(localStorage.getItem('skyway_drivers')) || [];
+            let found = drivers.find(d => d.phone === phone);
+
+            modal.style.display = "flex"; // Show Modal
+
+            if(found) {
+                document.getElementById('modalEmoji').innerText = "✅";
+                document.getElementById('modalTitle').innerText = "Welcome Back!";
+                document.getElementById('modalMessage').innerText = "Hello " + found.name + ", logging you in...";
+                redirectUrl = "driver-dashboard.html";
+            } else {
+                document.getElementById('modalEmoji').innerText = "❌";
+                document.getElementById('modalTitle').innerText = "Login Failed";
+                document.getElementById('modalMessage').innerText = "Driver not found. Please register first.";
+                redirectUrl = ""; // No redirect if failed
+            }
+        });
+
+        function closeGlobalModal() {
+            modal.style.display = "none";
+            if(redirectUrl) {
+                window.location.href = redirectUrl;
+            }
+        }
+    </script>
+</body>
+</html>

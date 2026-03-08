@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyway Cab Service</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hero Section Styles */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 50px 10%;
+      color: #003366;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      max-width: 450px;
+      line-height: 1.6;
+    }
+
+    /* Features Grid */
+    .features-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px 5%;
+      margin-top: -50px; /* Overlap effect */
+    }
+
+    .feature-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .feature-card h3 {
+      color: #007BFF;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
+    }
+
+    .feature-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-card li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .feature-card li::before {
+      content: "◆";
+      color: #007BFF;
+      margin-right: 10px;
+    }
+
+    .action-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* Navbar Customization */
+    nav {
+      background: #007BFF;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .get-started-btn {
+      background: #FFD700;
+      color: #333 !important;
+      padding: 8px 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="Logo (2).png" alt="Logo" style="height: 40px;">
+      <span style="font-weight: bold; font-size: 1.2rem;">SKYWAY CAB</span>
+    </div>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="driver-benefits.html">Drivers</a>  
+      <a href="customer-benefits.html">Customers</a>
+      <a href="admin.html">Admin</a>
+      <a href="get-started.html" class="get-started-btn">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="side left">
+      <img src="Logo (2).png" alt="Big Logo" style="width: 350px;">
+    </div>
+    <div class="hero-content">
+      <h1>Smart Local Cab<br>Booking Platform</h1>
+      <p>An affordable alternative to high-commission cab apps, supporting local drivers with a 20% commission fee.</p>
+    </div>
+    <div class="side right">
+      <img src="hero hand.png" alt="Phone App" style="width: 280px;">
+    </div>
+  </div>
+
+  <div class="features-container">
+    
+    <div class="feature-card">
+      <h3>Simple for Drivers</h3>
+      <ul>
+        <li>Hassle-free registration</li>
+        <li>Upload RC & Driving License</li>
+        <li>Admin verification</li>
+        <li>Only 10% commission</li>
+      </ul>
+      <a href="driver-reg.html" class="action-btn">New Drivers Register Now</a><br>
+      <a href="#" class="action-btn" style="background:#555; margin-top:10px;">Existed Drivers Login</a>
+    </div>
+
+    <div class="feature-card">
+      <h3>Easy for Customers</h3>
+      <ul>
+        <li>Nearby cab booking</li>
+        <li>Safe & comfortable rides</li>
+        <li>Clear pricing</li>
+        <li>Verified drivers</li>
+      </ul>
+      <a href="booking.html" class="action-btn" style="width: 80%; text-align: center;">Booking System</a>
+      
+    </div>
+
+    <div class="feature-card">
+      <h3>Admin Verification</h3>
+      <ul>
+        <li>Driver document checks</li>
+        <li>Approve/reject registrations</li>
+        <li>Monitor rides & payments</li>
+        <li>Ensure platform safety</li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>

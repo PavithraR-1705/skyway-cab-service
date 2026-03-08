@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Registration - Skyway Cab</title>
+    <link rel="stylesheet" href="driver-reg.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        
+        <div class="side-area">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-img">
+        </div>
+
+        <div class="card-container">
+            <div class="reg-card">
+                <h2>🚕 Driver Registration</h2>
+                
+                <form id="driverRegForm">
+                    <div class="input-field">
+                        <label>Name</label>
+                        <input type="text" id="driverName" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Phone</label>
+                        <input type="number" id="driverPhone" placeholder="Enter phone number" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Vehicle Number</label>
+                        <input type="text" id="carNumber" placeholder="TN XX XX XXXX" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Place</label>
+                        <input type="text" id="driverPlace" placeholder="Enter location" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="side-area">
+            <img src="hero hand.png" alt="App Preview" class="side-img">
+        </div>
+
+    </div>
+    <div id="globalModal" class="global-modal-overlay">
+    <div class="glass-modal">
+        <div style="font-size: 60px; margin-bottom: 10px;">✨</div>
+        <h3 id="modalTitle">Success!</h3>
+        <p id="modalMessage">Your action was completed successfully.</p>
+        <button onclick="closeGlobalModal()" class="glass-btn">Great!</button>
+    </div>
+</div>
+
+    <script>
+        document.getElementById('driverRegForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // 1. Form values-ah edukkurom
+            const name = document.getElementById('driverName').value;
+            const phone = document.getElementById('driverPhone').value;
+            const vehicle = document.getElementById('carNumber').value;
+            const place = document.getElementById('driverPlace').value;
+
+            // 2. Data object create pannuroom
+            const newDriver = {
+                name: name,
+                phone: phone,
+                vehicle: vehicle,
+                place: place,
+                status: "Active" // Default status
+            };
+
+            // 3. Existing drivers list-ah localStorage-la irundhu edukkurom
+            let driversList = JSON.parse(localStorage.getItem('skyway_drivers')) || [];
+
+            // 4. Pudhu driver-ah list-la sethu thirumba save pannuroom
+            driversList.push(newDriver);
+            localStorage.setItem('skyway_drivers', JSON.stringify(driversList));
+
+            // 5. Success message & Redirect
+            alert("Registration Successful!");
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

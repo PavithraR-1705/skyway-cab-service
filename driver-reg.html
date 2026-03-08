@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join as a Driver - Skyway</title>
+    <link rel="stylesheet" href="driver-reg.css">
+</head>
+<body>
+
+    <div id="globalModal" class="global-modal-overlay">
+        <div class="glass-modal">
+            <div class="modal-emoji">✨</div>
+            <h3 id="modalTitle">Success!</h3>
+            <p id="modalMessage">Your action was completed successfully.</p>
+            <button onclick="closeGlobalModal()" class="glass-btn">Great!</button>
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="side-panel">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-img">
+        </div>
+
+        <div class="card-container">
+            <div class="reg-card">
+                <h2>🚕 Join as a Driver</h2>
+                
+                <form id="driverRegForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="driverName" placeholder="Enter full name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Car Model</label>
+                        <input type="text" id="carModel" placeholder="e.g. Swift, Dzire" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Car Number</label>
+                        <input type="text" id="carNumber" placeholder="TN XX XX XXXX" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Mobile Number</label>
+                        <input type="number" id="driverPhone" placeholder="Enter mobile number" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Select Vehicle Type</label>
+                        <select id="vehicleType" required>
+                            <option value="" disabled selected>Select Your Vehicle Type</option>
+                            <option value="Mini">Mini (4 Seater)</option>
+                            <option value="Sedan">Sedan (Premium)</option>
+                            <option value="SUV">SUV (6 Seater)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="register-btn">Register Now</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <img src="hero hand.png" alt="App Preview" class="side-img">
+        </div>
+    </div>
+
+    <script>
+        const gModal = document.getElementById('globalModal');
+        const gTitle = document.getElementById('modalTitle');
+        const gMsg = document.getElementById('modalMessage');
+        let redirectPath = "";
+
+        // Function to trigger center glass modal
+        function showModal(title, message, url = null) {
+            gTitle.innerText = title;
+            gMsg.innerText = message;
+            redirectPath = url;
+            gModal.style.display = "flex"; 
+        }
+
+        function closeGlobalModal() {
+            gModal.style.display = "none";
+            if (redirectPath) {
+                window.location.href = redirectPath;
+            }
+        }
+
+        document.getElementById('driverRegForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const driverData = {
+                name: document.getElementById('driverName').value,
+                phone: document.getElementById('driverPhone').value,
+                vehicle: document.getElementById('carNumber').value,
+                model: document.getElementById('carModel').value,
+                type: document.getElementById('vehicleType').value,
+                status: "Active"
+            };
+            
+            let drivers = JSON.parse(localStorage.getItem('skyway_drivers')) || [];
+            drivers.push(driverData);
+            localStorage.setItem('skyway_drivers', JSON.stringify(drivers));
+
+            // Showing the centered glass modal
+            showModal("Registration Successful!", "Welcome to Skyway Cab Service. Your profile is now active.", "admin.html");
+        };
+    </script>
+</body>
+</html>

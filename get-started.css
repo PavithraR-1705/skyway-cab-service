@@ -1,0 +1,81 @@
+/* FULL PAGE BACKGROUND */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("./Backgroun logo.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* MAIN LAYOUT */
+.start-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Card center-la irukka image-ah orathula thallum */
+  padding: 0 5%;
+}
+
+/* SIDE IMAGES */
+.side img {
+  width: 380px;
+  opacity: 0.95;
+}
+
+/* CENTER GLASS CARD STYLE */
+.get-card {
+  background: white;
+  padding: 45px;
+  width: 100%;
+  max-width: 500px; /* Screenshot card width */
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  text-align: center;
+  transition: 0.3s;
+}
+
+/* HEADING */
+.get-card h2 {
+  color: #1e6fd9;
+  font-size: 26px;
+  margin-bottom: 35px;
+}
+
+/* BUTTONS GROUP */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* INDIVIDUAL BUTTON STYLE */
+.get-card button {
+  width: 100%;
+  padding: 16px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* PRIMARY HIGHLIGHT (Book a Cab) */
+.get-card .primary-btn {
+  background: #007bff; /* Screenshot-la ellame blue color-la irukkum */
+}
+
+/* HOVER EFFECT */
+.get-card button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0,123,255,0.25);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .side { display: none; } /* Mobile-la images hidden aagum */
+    .start-wrapper { justify-content: center; }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Skyway Cab</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="page-container">
+        
+        <div class="side-panel">
+            <img src="Logo (2).png" alt="Skyway Logo" class="side-logo">
+        </div>
+
+        <div class="main-content">
+            <div class="admin-card">
+                <h2>🛠 Admin Dashboard</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Bookings</span>
+                        <span class="stat-value" id="totalBookings">0</span>
+                    </div>
+                </div>
+
+                <div class="action-list">
+                    <button class="dash-btn" onclick="location.href='drivers-list.html'">
+                        <span>🚛</span> View Drivers List
+                    </button>
+                    
+                    <button class="dash-btn" onclick="location.href='live-bookings.html'">
+                        <span>📍</span> View Live Bookings
+                    </button>
+                    
+                    <button class="dash-btn offline-btn" onclick="location.href='booking.html'">
+                        <span>➕</span> New Booking (Offline)
+                    </button>
+                </div>
+
+                <p class="footer-text">Skyway Cab Management System v1.0</p>
+            </div>
+        </div>
+
+        <div class="side-panel">
+            <img src="hero hand.png" alt="App Preview" class="side-logo">
+        </div>
+
+    </div>
+
+    <script>
+        // Real-time update logic
+        window.onload = () => {
+            // Local storage key 'skyway_bookings' use panrom
+            let bookings = JSON.parse(localStorage.getItem('skyway_bookings')) || [];
+            document.getElementById('totalBookings').innerText = bookings.length;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url("Backgroun logo.png") no-repeat center center fixed; /* */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.header-box {
+    color: rgb(17, 11, 11);
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.header-box h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.header-box p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.drivers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 700px; /* Card size limit */
+    align-items: center;
+}
+
+/* Glass Card Style */
+.driver-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 25px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgb(20, 14, 14);
+    display: flex;
+    justify-content: space-between; /* To push details left and button right */
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.driver-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Details on the Left */
+.info h3 {
+    font-size: 24px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.info p {
+    font-size: 15px;
+    opacity: 0.95;
+    margin: 2px 0;
+}
+
+/* Button on the Right */
+.action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align elements to the right edge */
+    gap: 10px;
+}
+
+.status-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.status-tag.free {
+    background: #28a745; /* */
+    color: rgb(19, 15, 15);
+}
+
+.status-tag.busy {
+    background: #ff4d4d;
+    color: rgb(31, 22, 22);
+}
+
+/* Fix: Making the button smaller and neat */
+.book-btn {
+    background: #007BFF; /* */
+    color: rgb(22, 16, 16);
+    border: none;
+    padding: 12px 30px; /* Smaller padding */
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    width: auto; /* Fix: Button won't stretch full width */
+}
+
+.book-btn:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.book-btn:disabled {
+    background: rgba(255, 255, 255, 0.3);
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+/* No driver message */
+.no-driver {
+    color: rgb(12, 8, 8);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+}
