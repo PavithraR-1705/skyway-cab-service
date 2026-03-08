@@ -53,3 +53,8 @@ if __name__ == '__main__':
     # Render-ku yetha port setting
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
+
+@app.route('/get-bookings', methods=['GET'])
+def get_bookings():
+    bookings = list(bookings_collection.find({}, {"_id": 0})) # ID-ah thavira matha ellathaiyum edukkum
+    return jsonify(bookings), 200
